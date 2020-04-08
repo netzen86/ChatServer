@@ -56,7 +56,7 @@ class ServerProtocol(asyncio.Protocol):
     def send_message(self, content: str):
         message = f"{self.login}: {content}\r\n"
 
-        if len(self.history) <= 10:
+        if len(self.history) < 10:
             self.history.append(message)
         else:
             del self.history[0]
